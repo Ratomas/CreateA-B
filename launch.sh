@@ -11,12 +11,12 @@ else
 	exit 9
 fi
 
-if ! [[ -f Above+and+Beyond-1.3-Server.zip ]]; then
-	rm -fr config defaultconfigs global_data_packs global_resource_packs mods packmenu Above+and+Beyond-*-Server.zip
-	curl -L -o Above+and+Beyond-1.3-Server.zip https://www.curseforge.com/minecraft/modpacks/create-above-and-beyond/download/3567576 && unzip -u -o Above+and+Beyond-1.3-Server.zip -d /data
+if ! [[ -f server-1.3.jar ]]; then
+	rm -fr config defaultconfigs kubejs mods openloader worldshape forge-1.16.5-*.zip server-*.jar server.properties
+	mv /server/* /data/
 	
 	install_files() {
-		java -jar ${INSTALL_JAR} --installServer > /dev/null 2>&1
+		java -jar server-1.3.jar --installServer > /dev/null 2>&1
 	}
 	
 	echo "Installing Forge and required jars."
@@ -30,10 +30,13 @@ fi
 if [[ -n "$LEVEL" ]]; then
     sed -i "/level-name\s*=/ c level-name=$LEVEL" /data/server.properties
 fi
+if [[ -n "$LEVELTYPE" ]]; then
+    sed -i "/level-type\s*=/ c level-type=$LEVELTYPE" server.properties
+fi
 
 if [[ -n "$OPS" ]]; then
     echo $OPS | awk -v RS=, '{print}' >> ops.txt
 fi
 
 curl -o log4j2_112-116.xml https://launcher.mojang.com/v1/objects/02937d122c86ce73319ef9975b58896fc1b491d1/log4j2_112-116.xml
-java $JVM_OPTS -XX:MaxPermSize=256M -Dlog4j.configurationFile=log4j2_112-116.xml -jar $SERVER_JAR nogui
+java $JAVA_FLAGS $JVM_OPTS -XX:MaxPermSize=256M -Dlog4j.configurationFile=log4j2_112-116.xml -jar $SERVER_JAR nogui

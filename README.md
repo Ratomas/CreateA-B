@@ -30,6 +30,7 @@ These environment variables can be set at run time to override their defaults.
 * JVM_OPTS "-Xms2048m -Xmx2048m"
 * MOTD "A Minecraft (Create Above &amp; Beyond 1.3) Server Powered by Docker"
 * LEVEL world
+* LEVELTYPE ""
 
 ## Adding Minecraft Operators
 
@@ -39,5 +40,5 @@ example:
 `OPS="OpPlayer1,OpPlayer2"`
 
 ## Source
-Github: https://github.com/Ratomas/CreateA-B
-Docker: https://hub.docker.com/repository/docker/ratomas/createa-b
+Github: https://github.com/Ratomas/createa-b
+Docker: https://hub.docker.com/r/ratomas/createa-b
