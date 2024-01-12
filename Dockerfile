@@ -25,5 +25,4 @@ ENV MOTD "Create Above & Beyond v1.3 Server Powered by Docker"
 ENV LEVEL world
 ENV LEVELTYPE ""
 ENV JVM_OPTS "-Xms2048m -Xmx6144m"
-ENV SERVER_JAR="forge-1.16.5-36.2.20.jar"
 	

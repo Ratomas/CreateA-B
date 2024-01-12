@@ -39,4 +39,4 @@ if [[ -n "$OPS" ]]; then
 fi
 
 curl -o log4j2_112-116.xml https://launcher.mojang.com/v1/objects/02937d122c86ce73319ef9975b58896fc1b491d1/log4j2_112-116.xml
-java $JAVA_FLAGS $JVM_OPTS -XX:MaxPermSize=256M -Dlog4j.configurationFile=log4j2_112-116.xml -jar $SERVER_JAR nogui
+java $JAVA_FLAGS $JVM_OPTS -XX:MaxPermSize=256M -Dlog4j.configurationFile=log4j2_112-116.xml -jar server-1.3.jar nogui
